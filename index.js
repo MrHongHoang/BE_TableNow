@@ -1,20 +1,29 @@
-import  express  from "express";
-import bodyParser from "body-parser";
-import cors from 'cors';
-import posts from './routers/posts'
-import mongoose from 'mongoose';
+const express = require("express")
+const dotenv = require("dotenv")
+const mongoose = require("mongoose");
+const routes = require("./routes");
+const bodyParser = require("body-parser");
+dotenv.config()
 
 
 const app = express();
-const PORT = process.env.port || 5000;
+const PORT = process.env.port || 3001;
 
-const URI = 'mongodb+srv://mindx:<password>@mindxweb62.nwptbpv.mongodb.net/?retryWrites=true&w=majority'
 
-app.use(bodyParser.json({limit: '30mb'}));
-app.use(bodyParser.urlencoded({extended: true, limit: '30mb'}));
-app.use(cors());
+app.use(bodyParser.json())
 
-app.use('/posts', posts);
+routes(app);
+
+
+mongoose.connect(`${process.env.MONGO_DB}`)
+    .then(()=>{
+        console.log('Connect DB success')
+    })
+    .catch((err)=> {
+        console.log(err)
+    })
+
+
 
 
 
