@@ -42,7 +42,8 @@ const loginUser = (userLogin) => {
         const {Username, email, password, confirmPassword, phone } = userLogin
         try{
             const checkUser = await User.findOne({
-                email: email
+                Username: Username
+                // email: email
             })
             if (checkUser === null){
                 resolve({

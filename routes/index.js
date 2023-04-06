@@ -4,7 +4,7 @@ const UserRouter = require('./UserRouter')
 // const OderRouter = require('./OderRouter')
 // const StaffRouter = require('./StaffRouter')
 // const TableRouter = require('./TableRouter')
-// const ProfileRestaurentRouter = require('./ProfileRestaurentRouter')
+const ProfileRestaurentRouter = require('./ProfileRestaurentRouter')
 
 const routes = (app) => {
     app.use('/api/user', UserRouter)
@@ -13,6 +13,6 @@ const routes = (app) => {
     // app.use('/api/table', TableRouter),
     // app.use('/api/oder', OderRouter),
     // app.use('/api/staff', StaffRouter),
-    // app.use('/api/profile', ProfileRestaurentRouter)
+    app.use('/api/profile', ProfileRestaurentRouter)
 }
 module.exports = routes 

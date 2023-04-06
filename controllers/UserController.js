@@ -36,22 +36,24 @@ const loginUser = async (req, res) => {
       const { Username, email, password, confirmPassword, phone } = req.body;
       const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
       const isCheckEmail = reg.test(email);
-      if (!Username || !email || !password || !confirmPassword || !phone) {
+      // if (!Username || !email || !password || !confirmPassword || !phone) {
+        if (!Username ||  !password ) {
         return res.status(200).json({
           status: "ERR",
           message: "The input is required",
         });
-      } else if (!isCheckEmail) {
-        return res.status(200).json({
-          status: "ERR",
-          message: "The input is email",
-        });
-      } else if (password !== confirmPassword) {
-        return res.status(200).json({
-          status: "ERR",
-          message: "The input is equal confirmPassword",
-        });
       }
+      //  else if (!isCheckEmail) {
+      //   return res.status(200).json({
+      //     status: "ERR",
+      //     message: "The input is email",
+      //   });
+      // } else if (password !== confirmPassword) {
+      //   return res.status(200).json({
+      //     status: "ERR",
+      //     message: "The input is equal confirmPassword",
+      //   });
+      // }
   
       const response = await UserService.loginUser(req.body);
       return res.status(200).json(response);
