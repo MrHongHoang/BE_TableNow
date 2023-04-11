@@ -1,12 +1,10 @@
 const mongoose = require ('mongoose')
 const staffSchema = new mongoose.Schema(
     {
-    staffID: {type: Number, required: true,unique: true},
-    restaurentID: {type: Number, required: true, unique: true},
     staffName: {type: String, required: true},
     staffSex: {type: String, required: true},
-    accountName: {type: String, required: true},
-    accountPassword: {type: String, required: true},
+    accountStaff: {type: String, required: true},
+    passwordStaff: {type: String, required: true},
     },
     {
     timestamps: true
